@@ -8,7 +8,8 @@ import javax.security.auth.login.LoginException;
 public class MainBot extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
-        String token = "NzM2Nzg4MjIxMDQzODAyMTMz.Xxz5gA.p1XML2nQqNBJMCOEI6rfOqFv2NE";
+        //todo: regenerar token  desde discord
+        String token = "NzM2Nzg4MjIxMDQzODAyMTMz.Xxz5gA.zy6opBROCaHTnKdudRKkq8IRAEs";
         builder.setToken(token);
         builder.addEventListener(new MainBot());
         builder.buildAsync();
