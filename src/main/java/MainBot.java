@@ -9,7 +9,7 @@ public class MainBot extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
         //todo: regenerar token  desde discord
-        String token = "NzM2Nzg4MjIxMDQzODAyMTMz.Xxz5gA.zy6opBROCaHTnKdudRKkq8IRAEs";
+        String token ;
         builder.setToken(token);
         builder.addEventListener(new MainBot());
         builder.buildAsync();
