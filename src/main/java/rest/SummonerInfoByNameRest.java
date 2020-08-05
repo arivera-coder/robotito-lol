@@ -1,12 +1,17 @@
 package rest;
 
+import Entity.SummonerInfo;
 import com.google.inject.Inject;
+
+import com.sun.jersey.core.util.MultivaluedMapImpl;
 import lombok.extern.slf4j.Slf4j;
+import javax.ws.rs.core.MultivaluedMap;
 
 import javax.inject.Singleton;
 import java.io.IOException;
 import java.util.HashMap;
 
+@Slf4j
 @Singleton
 public class SummonerInfoByNameRest extends BaseClient {
 
@@ -15,15 +20,19 @@ public class SummonerInfoByNameRest extends BaseClient {
 	@Inject
 	public SummonerInfoByNameRest() throws IOException {
 		super.headers = new HashMap<>();
-		super.headers.put("X-Riot-Token","RGAPI-8a8f1e8f-1e0a-48d0-af80-1ca9030e19a4");
-		super.headers.put("Accept-Charset","application/x-www-form-urlencoded; charset=UTF-8");
+		super.headers.put("X-Riot-Token","RGAPI-27fd3c38-c1f8-47eb-af7e-25f9d144167b");
+		//super.headers.put("Accept-Charset","application/x-www-form-urlencoded; charset=UTF-8");
 	}
 
-	public void getInfoByNameSummoner(String nameSummoner){
+	public SummonerInfo getInfoByNameSummoner(String nameSummoner){
+		SummonerInfo res =null;
 		try{
-			Object res = super.get(String.format(URL,nameSummoner));
-		}catch (Exception e){
+			res = super.get(String.format(URL,nameSummoner), SummonerInfo.class);
+			return res;
+		}catch (Exception e) {
+			log.error("error in api riot games",e);
 		}
+		return res;
 	}
 
 }

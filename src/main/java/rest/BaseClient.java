@@ -1,9 +1,12 @@
 package rest;
 
+import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
+import javax.ws.rs.core.MultivaluedMap;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -15,6 +18,7 @@ import java.util.Map;
 public class BaseClient {
 	private ClientConfig clientConfig;
 	private Client client;
+	private Gson gson;
 	protected Map<String,String> headers;
 
 	@Inject
@@ -25,14 +29,21 @@ public class BaseClient {
 
 	public Object get (String uri){
 		WebResource webResource = this.client.resource(UriBuilder.fromUri(uri).build());
-		webResource.type(MediaType.APPLICATION_JSON_TYPE);
-		setDataHeaders(webResource);
-		return webResource.get(Object.class);
+		webResource.type(MediaType.APPLICATION_JSON);
+		//setDataHeaders(webResource);
+		return webResource.get(String.class);
 	}
 
-	public void setDataHeaders(WebResource webResource){
+	public <T> T get (String uri,Class<T> clazz){
+		WebResource.Builder webResource = this.client.resource(UriBuilder.fromUri(uri).build()).getRequestBuilder();
+		webResource.type(MediaType.APPLICATION_JSON);
+		setDataHeaders(webResource);
+		return ((ClientResponse)webResource.get(Object.class)).getEntity(clazz);
+	}
+
+	public void setDataHeaders(WebResource.Builder webResource){
 		this.headers.keySet().forEach(key->{
-			webResource.header(key,this.headers.get(key));
+			webResource.header(key.toString(),this.headers.get(key));
 		});
 	}
 }
