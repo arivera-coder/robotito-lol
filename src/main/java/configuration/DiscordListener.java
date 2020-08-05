@@ -15,8 +15,7 @@ public class DiscordListener extends ListenerAdapter {
 	public DiscordListener(SummonerController summonerController) {
 		this.summonerController = summonerController;
 	}
-	public DiscordListener(){
-
+	public DiscordListener() {
 	}
 
 	@Override
