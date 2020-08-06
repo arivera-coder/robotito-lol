@@ -20,7 +20,7 @@ public class SummonerInfoByNameRest extends BaseClient {
 	@Inject
 	public SummonerInfoByNameRest() throws IOException {
 		super.headers = new HashMap<>();
-		super.headers.put("X-Riot-Token","");
+		super.headers.put("X-Riot-Token","RGAPI-c9c99a88-09f0-471a-9171-e27439325c04");
 		//super.headers.put("Accept-Charset","application/x-www-form-urlencoded; charset=UTF-8");
 	}
 

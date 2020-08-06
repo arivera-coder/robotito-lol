@@ -31,7 +31,8 @@ public class DiscordListener extends ListenerAdapter {
 		} if(event.getMessage().getContentRaw().startsWith("--robotito ")){
 			String name =event.getMessage().getContentRaw();
 			name = StringUtils.remove(name,"--robotito ");
-			summonerController.getInfo(name);
+
+			event.getChannel().sendMessage(summonerController.getInfo(name).toString()).queue();
 		}
 
 	}

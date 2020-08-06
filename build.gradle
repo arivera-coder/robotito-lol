@@ -40,7 +40,7 @@ dependencies {
     compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
 
     // https://mvnrepository.com/artifact/com.sun.jersey/jersey-json
-    compile group: 'com.sun.jersey', name: 'jersey-json', version: '1.12'
+    compile group: 'com.sun.jersey', name: 'jersey-json', version: '1.17.1'
 
 
 }

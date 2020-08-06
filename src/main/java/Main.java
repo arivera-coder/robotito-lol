@@ -27,7 +27,7 @@ public class Main extends AbstractModule {
 	public void configListener() throws LoginException {
 		JDABuilder builder = new JDABuilder(AccountType.BOT);
 		//todo: poner token de discord
-		String token = "";
+		String token = "NzM2Nzg4MjIxMDQzODAyMTMz.Xxz5gA.cpuxtohn-jom19o6pT2TG8PIrm4";
 		builder.setToken(token);
 		builder.addEventListener(injector.getInstance(DiscordListener.class));
 		builder.buildAsync();

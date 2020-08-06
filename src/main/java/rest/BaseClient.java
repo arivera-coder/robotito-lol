@@ -18,7 +18,7 @@ import java.util.Map;
 public class BaseClient {
 	private ClientConfig clientConfig;
 	private Client client;
-	private Gson gson;
+	private Gson gson = new Gson();
 	protected Map<String,String> headers;
 
 	@Inject
@@ -38,7 +38,7 @@ public class BaseClient {
 		WebResource.Builder webResource = this.client.resource(UriBuilder.fromUri(uri).build()).getRequestBuilder();
 		webResource.type(MediaType.APPLICATION_JSON);
 		setDataHeaders(webResource);
-		return ((ClientResponse)webResource.get(Object.class)).getEntity(clazz);
+		return gson.fromJson(webResource.get(String.class), clazz);
 	}
 
 	public void setDataHeaders(WebResource.Builder webResource){

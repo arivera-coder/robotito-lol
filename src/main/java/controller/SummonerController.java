@@ -1,5 +1,6 @@
 package controller;
 
+import Entity.SummonerInfo;
 import rest.SummonerInfoByNameRest;
 
 import javax.inject.Inject;
@@ -15,8 +16,8 @@ public class SummonerController {
 		this.summonerInfoByNameRest = summonerInfoByNameRest;
 	}
 
-	public void getInfo(String name){
-		summonerInfoByNameRest.getInfoByNameSummoner(name);
+	public SummonerInfo getInfo(String name){
+		return summonerInfoByNameRest.getInfoByNameSummoner(name);
 	}
 
 }
